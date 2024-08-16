@@ -1,0 +1,26 @@
+## Diagram Illustration
+
+```plantuml
+@startuml
+skinparam rectangle {
+    roundCorner 25
+}
+
+rectangle "Start" as start
+rectangle "Approve USDC\nfor Uniswap" as approveUSDC
+rectangle "Get Uniswap\nPool Info" as getPoolInfo
+rectangle "Prepare Swap\nParameters" as prepareSwap
+rectangle "Execute USDC to LINK\nSwap on Uniswap" as executeSwap
+rectangle "Approve LINK\nfor Aave" as approveLINK
+rectangle "Supply LINK\nto Aave Pool" as supplyAave
+rectangle "End" as end
+
+start --> approveUSDC
+approveUSDC --> getPoolInfo
+getPoolInfo --> prepareSwap
+prepareSwap --> executeSwap
+executeSwap --> approveLINK
+approveLINK --> supplyAave
+supplyAave --> end
+
+@enduml
